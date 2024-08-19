@@ -12,50 +12,49 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-
-        //example-1
-        body: Column(
-          children: [
-            Expanded(
-              flex: 2,
-              child: Container(
-                color: Colors.amber,
-              ),
-            ),
-            Expanded(
-              child: Container(
-                color: Colors.red,
-              ),
-            ),
-            Expanded(
-              child: Container(
-                color: Colors.pink,
-              ),
-            ),
-          ],
-        ),
-
-        // example-2
-        // body: Row(
+        //column example
+        // body: Column(
+        //   mainAxisAlignment: MainAxisAlignment.start,
+        //   crossAxisAlignment: CrossAxisAlignment.start,
         //   children: [
-        //     Expanded(
-        //       flex: 2,
-        //       child: Container(
-        //         color: Colors.amber,
-        //       ),
+        //     Container(
+        //       height: 100,
+        //       color: Colors.pink,
         //     ),
-        //     Expanded(
-        //       child: Container(
-        //         color: Colors.red,
-        //       ),
+        //     Container(
+        //       height: 100,
+        //       width: 200,
+        //       color: Colors.pink[400],
         //     ),
-        //     Expanded(
-        //       child: Container(
-        //         color: Colors.pink,
-        //       ),
+        //     Container(
+        //       height: 100,
+        //       width: 150,
+        //       color: Colors.pink[200],
         //     ),
+        //
         //   ],
         // ),
+        body: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              width: 150,
+              color: Colors.pink,
+            ),
+            Container(
+              height: 100,
+              width: 100,
+              color: Colors.pink[400],
+            ),
+            Container(
+              height: 50,
+              width: 50,
+              color: Colors.pink[200],
+            ),
+
+          ],
+        ),
       ),
     );
   }

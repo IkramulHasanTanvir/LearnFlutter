@@ -12,17 +12,21 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        backgroundColor: Colors.blue[100],
         body: Center(
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(50),
+            borderRadius: BorderRadius.circular(42),
             child: Container(
               height: 300,
-              width: 300,
-              color: Colors.pink,
+              width: 400,
+                child: Image.asset('asset/cat.jpg',
+                  fit: BoxFit.cover,
+                ),
+
+              ),
             ),
           ),
         ),
-      ),
     );
   }
 }

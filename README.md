@@ -1,3 +1,3 @@
-# Image.asset and Image.network Widget
+# Widget
 
 Click this banner and watch tutorial in youtube • [![]()]()

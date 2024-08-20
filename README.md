@@ -1,3 +1,3 @@
 # Expanded Widget
 
-[![](https://cdn.dribbble.com/userupload/16134390/file/original-9fc467c7c2908b7b46aa942c9e3e898b.png?resize=1024x576)]()
+[![](https://cdn.dribbble.com/userupload/16167070/file/original-62f01b8af3be9c5b05a02e9a7b41be45.png?resize=1024x576)](https://youtu.be/3HC3-MhxeBs?si=i68TfTx8ZTrkMRPT)

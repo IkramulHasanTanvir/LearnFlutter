@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:learn_flutter/circle.dart';
+import 'package:learn_flutter/my_square.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -11,50 +13,52 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        //column example
-        // body: Column(
-        //   mainAxisAlignment: MainAxisAlignment.start,
-        //   crossAxisAlignment: CrossAxisAlignment.start,
-        //   children: [
-        //     Container(
-        //       height: 100,
-        //       color: Colors.pink,
-        //     ),
-        //     Container(
-        //       height: 100,
-        //       width: 200,
-        //       color: Colors.pink[400],
-        //     ),
-        //     Container(
-        //       height: 100,
-        //       width: 150,
-        //       color: Colors.pink[200],
-        //     ),
-        //
-        //   ],
-        // ),
-        body: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              width: 150,
-              color: Colors.pink,
-            ),
-            Container(
-              height: 100,
-              width: 100,
-              color: Colors.pink[400],
-            ),
-            Container(
-              height: 50,
-              width: 50,
-              color: Colors.pink[200],
-            ),
+      home: MyHome(),
+    );
+  }
+}
 
-          ],
-        ),
+class MyHome extends StatefulWidget {
+  const MyHome({super.key});
+
+  @override
+  State<MyHome> createState() => _MyHomeState();
+}
+
+class _MyHomeState extends State<MyHome> {
+  final List<String> _stories = ['story1', 'story2', 'story3', 'story4'];
+
+  final List<String> _posts = ['post1', 'post2', 'post3', 'post4'];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('ListView'),
+      ),
+      body: Column(
+        children: [
+          Container(
+            height: 100,
+            child: Expanded(
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: _stories.length,
+                  itemBuilder: (context, index) {
+                return Circle(child: _stories[index]);
+              }),
+            ),
+          ),
+          Expanded(
+            child: ListView.builder(
+                itemCount: _posts.length,
+                itemBuilder: (context, index) {
+                  return MySquare(
+                    child: _posts[index],
+                  );
+                }),
+          ),
+        ],
       ),
     );
   }

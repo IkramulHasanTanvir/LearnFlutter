@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:learn_flutter/my_home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,9 +9,23 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MyHome(),
+      home: Scaffold(
+        backgroundColor: Colors.deepPurple[100],
+        appBar: AppBar(
+          foregroundColor: Colors.grey[300],
+          backgroundColor: Colors.deepPurple[300],
+          leading: IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.menu),
+          ),
+          title: Text('A P P B A R'),
+          actions: [
+            IconButton(onPressed: (){}, icon: Icon(Icons.account_circle),),
+          ],
+        ),
+      ),
     );
   }
 }

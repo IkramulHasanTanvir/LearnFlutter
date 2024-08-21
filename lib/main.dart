@@ -12,20 +12,19 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Colors.blue[100],
-        body: Center(
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(42),
-            child: Container(
-              height: 300,
-              width: 400,
-                child: Image.asset('asset/cat.jpg',
-                  fit: BoxFit.cover,
+        body: GridView.builder(
+          physics: NeverScrollableScrollPhysics(),
+          itemCount: 24,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3),
+            itemBuilder: (context, index){
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  color: Colors.purple[200],
                 ),
-
-              ),
-            ),
-          ),
+              );
+            })
         ),
     );
   }

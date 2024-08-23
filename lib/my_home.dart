@@ -1,51 +1,59 @@
 import 'package:flutter/material.dart';
-import 'package:learn_flutter/tabs/account_tab.dart';
-import 'package:learn_flutter/tabs/home_tab.dart';
-import 'package:learn_flutter/tabs/settings_tab.dart';
 
-class MyHome extends StatelessWidget {
+class MyHome extends StatefulWidget {
   const MyHome({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 3,
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.deepPurple[300],
-          title:const Text('T A B B A R'),
-        ),
-        body: Column(
-          children: [
-            TabBar(
-              labelColor: Colors.deepPurple[300],
-                unselectedLabelColor: Colors.deepPurple[300],
-                tabs:const  [
-              Tab(
-                icon: Icon(
-                  Icons.home,
-                ),
-              ),
-              Tab(
-                icon: Icon(
-                  Icons.settings,
-                ),
-              ),
-              Tab(
-                icon: Icon(
-                  Icons.person,
-                ),
-              ),
-            ]),
+  State<MyHome> createState() => _MyHomeState();
+}
 
-            const Expanded(
-              child: TabBarView(children: [
-                HomeTab(),
-                SettingsTab(),
-                AccountTab(),
-              ]),
+class _MyHomeState extends State<MyHome> {
+  double boxHeight = 100;
+  double boxWidth = 100;
+  var boxColor = Colors.deepPurple[300];
+  // double boxX = -1;
+  // double boxY = -1;
+
+  void _expandBox(){
+    setState(() {
+      boxHeight = 300;
+      boxWidth = 300;
+    });
+  }
+  void _changeColor(){
+    setState(() {
+      boxColor = Colors.pink[300];
+    });
+  }
+
+  // void _moveBox(){
+  //   setState((){
+  //     boxX = 1;
+  //     boxY = 1;
+  //   });
+  // }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: _expandBox ,
+      child: Scaffold(
+        body: Center(
+          child: AnimatedContainer(
+            //alignment: Alignment(boxX, boxY),
+            height: boxHeight,
+            width: boxWidth,
+            color: boxColor,
+            duration: Duration(seconds: 1),
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              // child: Container(
+              //   color: boxColor,
+              //   height: boxHeight,
+              //   width: boxWidth,
+              // ),
             ),
-          ],
+          ),
         ),
       ),
     );

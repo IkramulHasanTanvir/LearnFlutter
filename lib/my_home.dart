@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:learn_flutter/pages/user_home.dart';
 
 class MyHome extends StatelessWidget {
   const MyHome({super.key});
@@ -7,33 +6,97 @@ class MyHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.deepPurple[300],
-        title: Text('D R A W E R'),
-      ),
-      drawer: Drawer(
-        child: Container(
-          color: Colors.deepPurple[100],
-          child: ListView(
-            children: [
-              DrawerHeader(
-                child: Icon(
-                  Icons.favorite,
-                  size: 42,
-                  color: Colors.grey[800],
+      backgroundColor: Colors.deepPurple[100],
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            backgroundColor: Colors.pink[400],
+            leading: Icon(Icons.account_circle),
+            //title: Text('S L I V E R A P P B A R'),
+            expandedHeight: 200,
+            pinned: true,
+            flexibleSpace: FlexibleSpaceBar(
+              title: Text('S L I V E R A P P B A R'),
+              background: Container(
+                color: Colors.deepPurple[200]
+              ),
+            ),
+          ),
+
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(24),
+                child: Container(
+                  height: 400,
+                  color: Colors.deepPurple[200],
                 ),
               ),
-              ListTile(
-                leading: Icon(Icons.home),
-                title: Text('H O M E'),
-                onTap: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => UserHome()));
-                },
-              )
-            ],
+            ),
           ),
-        ),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(24),
+                child: Container(
+                  height: 400,
+                  color: Colors.deepPurple[200],
+                ),
+              ),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(24),
+                child: Container(
+                  height: 400,
+                  color: Colors.deepPurple[200],
+                ),
+              ),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(24),
+                child: Container(
+                  height: 400,
+                  color: Colors.deepPurple[200],
+                ),
+              ),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(24),
+                child: Container(
+                  height: 400,
+                  color: Colors.deepPurple[200],
+                ),
+              ),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(24),
+                child: Container(
+                  height: 400,
+                  color: Colors.deepPurple[200],
+                ),
+              ),
+            ),
+          ),
+
+        ],
       ),
     );
   }

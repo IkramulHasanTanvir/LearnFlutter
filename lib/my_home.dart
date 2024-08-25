@@ -8,19 +8,36 @@ class MyHome extends StatefulWidget {
 }
 
 class _MyHomeState extends State<MyHome> {
+
+  void _showDialog (){
+    showDialog(context: context, builder: (context){
+      return AlertDialog(
+        backgroundColor: Colors.deepPurple.shade100,
+        title: Text('Title',style: TextStyle(fontSize: 32),),
+        content: Text('hey, how are you? Brother'),
+        contentPadding: EdgeInsets.all(32),
+        actions: [
+          TextButton(onPressed: (){}, child: Text('Ok'),),
+          TextButton(onPressed: (){
+            Navigator.pop(context);
+          }, child: Text('Cancel'),),
+        ],
+      );
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.deepPurple.shade100,
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Text('Height ' + MediaQuery.sizeOf(context).height.toString()),
-            Text('Width ' + MediaQuery.sizeOf(context).width.toString()),
-            Text('Aspect Ratio ' + MediaQuery.sizeOf(context).aspectRatio.toStringAsFixed(2)),
-            Text(MediaQuery.of(context).orientation.toString()),
-          ],
-        ),
+        child: ElevatedButton(
+          onPressed: _showDialog,
+          child: Text('Click Here',style: TextStyle(
+            fontSize: 32,
+          ),),
+
+        )
       ),
     );
   }

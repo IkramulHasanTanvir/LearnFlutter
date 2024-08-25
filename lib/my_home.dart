@@ -13,21 +13,19 @@ class MyHome extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.all(16.0),
-              child: RichText(text: TextSpan(
-                style: Theme.of(context).textTheme.bodyMedium,
-                children: [
-                  TextSpan(
-                    text: 'Hey this is '
-                  ),
-                  TextSpan(
-                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Colors.red[800]),
-                    text: 'Tanvir Hridoy '
-                  ),
-                  TextSpan(
-                    text: 'here. How about You?'
-                  )
-                ]
-              )),
+              child: RichText(
+                  text: TextSpan(
+                      style: Theme.of(context).textTheme.bodyMedium,
+                      children: [
+                    TextSpan(text: 'Hey this is '),
+                    TextSpan(
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyLarge!
+                            .copyWith(color: Colors.red[800]),
+                        text: 'Tanvir Hridoy '),
+                    TextSpan(text: 'here. How about You?')
+                  ])),
             ),
           ],
         ),

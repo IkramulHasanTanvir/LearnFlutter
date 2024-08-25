@@ -11,16 +11,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MyHome(),
-      theme: ThemeData(textTheme: TextTheme(
+      home: const MyHome(),
+      theme: ThemeData(textTheme: const TextTheme(
         bodyLarge: TextStyle(
-          fontSize: 44,
+          fontSize: 28,
+          fontWeight: FontWeight.bold
         ),
 
         bodyMedium: TextStyle(
             fontSize: 24,
-            fontWeight: FontWeight.bold,
-            fontStyle: FontStyle.italic
         ),
 
         bodySmall: TextStyle(

@@ -1,31 +1,44 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
-class MyHome extends StatelessWidget {
+class MyHome extends StatefulWidget {
   const MyHome({super.key});
+
+  @override
+  State<MyHome> createState() => _MyHomeState();
+}
+
+class _MyHomeState extends State<MyHome> {
+  int timeLeft = 5;
+
+  void _timerCountDown() {
+    Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (timeLeft > 0) {
+        timeLeft--;
+        setState(() {});
+      } else {
+        timer.cancel();
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.deepPurple[200],
+      backgroundColor: Colors.deepPurple.shade100,
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: RichText(
-                  text: TextSpan(
-                      style: Theme.of(context).textTheme.bodyMedium,
-                      children: [
-                    TextSpan(text: 'Hey this is '),
-                    TextSpan(
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyLarge!
-                            .copyWith(color: Colors.red[800]),
-                        text: 'Tanvir Hridoy '),
-                    TextSpan(text: 'here. How about You?')
-                  ])),
+            Text(
+              timeLeft == 0 ? 'DONE' : timeLeft.toString(),
+              style: const TextStyle(fontSize: 56),
+            ),
+            MaterialButton(
+              color: Colors.deepPurple.shade300,
+              onPressed: _timerCountDown,
+              child: const Text('S T A R T'),
             ),
           ],
         ),

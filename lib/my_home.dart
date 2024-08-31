@@ -7,50 +7,33 @@ class MyHome extends StatefulWidget {
   State<MyHome> createState() => _MyHomeState();
 }
 
-class _MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
-  late AnimationController _animationController;
+class _MyHomeState extends State<MyHome> {
+  double _currentValue = 1;
 
-  @override
-  void initState() {
-    super.initState();
-    _animationController = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 1),
-    );
-  }
-
-  bool videoPlaying = false;
-
-  void _iconTapped() {
-    if (videoPlaying == false) {
-      _animationController.forward();
-      videoPlaying = true;
-    } else {
-      _animationController.reverse();
-      videoPlaying = false;
-    }
+  void _tappedLeftToRight(double value) {
+    _currentValue = value;
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.deepPurple[100],
-      body: Center(
-        child: GestureDetector(
-          onTap: _iconTapped,
-          child: AnimatedIcon(
-            icon: AnimatedIcons.menu_home,
-            progress: _animationController,
-            size: 156,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Slider(
+            activeColor: Colors.red[400],
+            inactiveColor: Colors.grey[300],
+            thumbColor: Colors.grey[600],
+            min: 1,
+            max: 100,
+            divisions: 100,
+            label: _currentValue.toStringAsFixed(0),
+            value: _currentValue,
+            onChanged: _tappedLeftToRight,
           ),
-        ),
+        ],
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    _animationController;
   }
 }

@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:learn_flutter/pages/page1.dart';
-import 'package:learn_flutter/pages/page2.dart';
-import 'package:learn_flutter/pages/page3.dart';
 
 class MyHome extends StatefulWidget {
   const MyHome({super.key});
@@ -11,19 +8,50 @@ class MyHome extends StatefulWidget {
 }
 
 class _MyHomeState extends State<MyHome> {
-  final _controller = PageController();
+  String userPost = '';
+
+  final _textController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: PageView(
-        scrollDirection: Axis.vertical,
-        controller: _controller,
-        children: const [
-          Page1(),
-          Page2(),
-          Page3(),
-        ],
+      body: Padding(
+        padding: const EdgeInsets.all(44.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Expanded(
+              child: Center(
+                child: Text(
+                  userPost,
+                  style: const TextStyle(fontSize: 32),
+                ),
+              ),
+            ),
+            TextField(
+              controller: _textController,
+              decoration: InputDecoration(
+                hintText: 'What\'s on your mind?',
+                border: const OutlineInputBorder(),
+                suffixIcon: IconButton(
+                  onPressed: () {
+                    _textController.clear();
+                  },
+                  icon: const Icon(Icons.clear),
+                ),
+              ),
+            ),
+            MaterialButton(
+              color: Colors.blue,
+              onPressed: () {
+                userPost = _textController.text;
+                setState(() {});
+              },
+              child: const Text('Post'),
+            ),
+          ],
+        ),
       ),
     );
   }

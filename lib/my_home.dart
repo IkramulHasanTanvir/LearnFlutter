@@ -8,31 +8,38 @@ class MyHome extends StatefulWidget {
 }
 
 class _MyHomeState extends State<MyHome> {
-  double _currentValue = 1;
+  DateTime _dateTime = DateTime.now();
 
-  void _tappedLeftToRight(double value) {
-    _currentValue = value;
-    setState(() {});
+  void _showDatePicker() {
+    showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2030),
+    ).then((value) {
+      _dateTime = value!;
+      setState(() {});
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Slider(
-            activeColor: Colors.red[400],
-            inactiveColor: Colors.grey[300],
-            thumbColor: Colors.grey[600],
-            min: 1,
-            max: 100,
-            divisions: 100,
-            label: _currentValue.toStringAsFixed(0),
-            value: _currentValue,
-            onChanged: _tappedLeftToRight,
-          ),
-        ],
+      backgroundColor: Colors.deepPurple[100],
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Text(
+              _dateTime.toString(),
+              style: const TextStyle(fontSize:24),
+            ),
+            ElevatedButton(
+              onPressed: _showDatePicker,
+              child: const Text('D A T E P I C K E R'),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -1,7 +1,6 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
-import 'package:learn_flutter/pages/page1.dart';
-import 'package:learn_flutter/pages/page2.dart';
-import 'package:learn_flutter/pages/page3.dart';
 
 class MyHome extends StatefulWidget {
   const MyHome({super.key});
@@ -11,18 +10,38 @@ class MyHome extends StatefulWidget {
 }
 
 class _MyHomeState extends State<MyHome> {
-  final _controller = PageController();
+  int timeLeft = 5;
+
+  void _timerCountDown() {
+    Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (timeLeft > 0) {
+        timeLeft--;
+        setState(() {});
+      } else {
+        timer.cancel();
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: PageView(
-        controller: _controller,
-        scrollDirection: Axis.vertical,
-        children: const [
-          Page1(),
-          Page2(),
-          Page3(),
-        ],
+      backgroundColor: Colors.deepPurple.shade100,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Text(
+              timeLeft == 0 ? 'DONE' : timeLeft.toString(),
+              style: const TextStyle(fontSize: 56),
+            ),
+            MaterialButton(
+              color: Colors.deepPurple.shade300,
+              onPressed: _timerCountDown,
+              child: const Text('S T A R T'),
+            ),
+          ],
+        ),
       ),
     );
   }

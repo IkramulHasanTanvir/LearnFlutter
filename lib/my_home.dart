@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:learn_flutter/pages/page1.dart';
-import 'package:learn_flutter/pages/page2.dart';
-import 'package:learn_flutter/pages/page3.dart';
 
 class MyHome extends StatefulWidget {
   const MyHome({super.key});
@@ -11,20 +8,30 @@ class MyHome extends StatefulWidget {
 }
 
 class _MyHomeState extends State<MyHome> {
-  final _controller = PageController();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: PageView(
-        scrollDirection: Axis.vertical,
-        controller: _controller,
-        children: const [
-          Page1(),
-          Page2(),
-          Page3(),
+        body: Center(
+      child: Stack(
+        alignment: AlignmentDirectional.center,
+        children: [
+          Container(
+            height: 300,
+            width: 300,
+            color: Colors.deepPurple[300],
+          ),
+          Container(
+            height: 200,
+            width: 200,
+            color: Colors.deepPurple[200],
+          ),
+          Container(
+            height: 100,
+            width: 100,
+            color: Colors.deepPurple[100],
+          ),
         ],
       ),
-    );
+    ));
   }
 }

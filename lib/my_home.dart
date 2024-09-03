@@ -39,7 +39,7 @@ class _MyHomeState extends State<MyHome> {
                   controller: _hoursController,
                   perspective: 0.01,
                   diameterRatio: 1.2,
-                  physics:  const FixedExtentScrollPhysics(),
+                  physics: const FixedExtentScrollPhysics(),
                   itemExtent: 50,
                   childDelegate: ListWheelChildBuilderDelegate(
                       childCount: 13,
@@ -66,7 +66,7 @@ class _MyHomeState extends State<MyHome> {
                   controller: _minutesController,
                   perspective: 0.01,
                   diameterRatio: 1.2,
-                  physics:  const FixedExtentScrollPhysics(),
+                  physics: const FixedExtentScrollPhysics(),
                   itemExtent: 50,
                   childDelegate: ListWheelChildBuilderDelegate(
                       childCount: 60,
@@ -84,7 +84,7 @@ class _MyHomeState extends State<MyHome> {
                   itemExtent: 50,
                   perspective: 0.01,
                   diameterRatio: 1.2,
-                  physics:  const FixedExtentScrollPhysics(),
+                  physics: const FixedExtentScrollPhysics(),
                   childDelegate: ListWheelChildBuilderDelegate(
                       childCount: 2,
                       builder: (context, index) {

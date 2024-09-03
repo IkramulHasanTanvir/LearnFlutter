@@ -8,30 +8,37 @@ class MyHome extends StatefulWidget {
 }
 
 class _MyHomeState extends State<MyHome> {
+  TimeOfDay _timeOfDay = const TimeOfDay(hour: 12, minute: 00);
+
+  void _showTimePicker() {
+    showTimePicker(
+      context: context,
+      initialTime: TimeOfDay.now(),
+    ).then((onValue) {
+      _timeOfDay = onValue!;
+      setState(() {});
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Center(
-      child: Stack(
-        alignment: AlignmentDirectional.center,
-        children: [
-          Container(
-            height: 300,
-            width: 300,
-            color: Colors.deepPurple[300],
-          ),
-          Container(
-            height: 200,
-            width: 200,
-            color: Colors.deepPurple[200],
-          ),
-          Container(
-            height: 100,
-            width: 100,
-            color: Colors.deepPurple[100],
-          ),
-        ],
+      backgroundColor: Colors.deepPurple[100],
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Text(
+              _timeOfDay.format(context).toString(),
+              style: const TextStyle(fontSize: 32),
+            ),
+            ElevatedButton(
+              onPressed: _showTimePicker,
+              child: const Text('T I M E P I C K E R'),
+            ),
+          ],
+        ),
       ),
-    ));
+    );
   }
 }
